@@ -6,7 +6,8 @@ import './index.css';
 // import App from './App';
 // import App from './examples-hook/00-chessboard';
 // import App from './examples-hook/01-dustbin/copy-or-move';
-import App from './examples-hook/01-dustbin/multiple-targets';
+// import App from './examples-hook/01-dustbin/multiple-targets';
+import App from './examples-hook/01-dustbin/single-target';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
