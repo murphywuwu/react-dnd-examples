@@ -6,6 +6,7 @@ import Box from './Box';
 // @ts-ignore
 import Frame, { FrameContextConsumer } from 'react-frame-component';
 const FrameBindingContext = ({ children }) => (<FrameContextConsumer>
+    {/* 关键代码 */}
 		{({ window }) => (<DndProvider backend={HTML5Backend} context={window}>
 				{children}
 			</DndProvider>)}
