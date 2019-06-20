@@ -8,7 +8,8 @@ import './index.css';
 // import App from './examples-hook/01-dustbin/copy-or-move';
 // import App from './examples-hook/01-dustbin/multiple-targets';
 // import App from './examples-hook/01-dustbin/single-target';
-import App from './examples-hook/01-dustbin/single-target-in-iframe';
+// import App from './examples-hook/01-dustbin/single-target-in-iframe';
+import App from './examples-hook/01-dustbin/stress-test';
 
 import * as serviceWorker from './serviceWorker';
 
