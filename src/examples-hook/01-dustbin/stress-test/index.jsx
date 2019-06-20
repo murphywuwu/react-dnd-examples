@@ -23,6 +23,7 @@ const Container = () => {
     ]);
     const [droppedBoxNames, setDroppedBoxNames] = useState([]);
     useEffect(() => {
+        // 关键代码
         const interval = setInterval(() => {
             setBoxes(shuffle(boxes));
             setDustbins(shuffle(dustbins));
