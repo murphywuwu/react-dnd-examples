@@ -15,6 +15,13 @@ const style = {
 const Dustbin = ({ accept, lastDroppedItem, onDrop, }) => {
     const [{ isOver, canDrop }, drop] = useDrop({
         accept,
+        canDrop: (item, monitor) => {
+          console.log('canDrop', item, monitor);
+          return true;
+        },
+        hover: (item, monitor) => {
+          console.log('hover', item, monitor);
+        },
         drop: onDrop,
         collect: monitor => ({
             isOver: monitor.isOver(),

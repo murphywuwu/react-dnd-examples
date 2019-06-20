@@ -12,6 +12,15 @@ const style = {
 const Box = ({ name, type, isDropped }) => {
     const [{ opacity }, drag] = useDrag({
         item: { name, type },
+        canDrag: (monitor) => { console.log('canDrag', monitor); return true },
+        begin: (monitor) => { 
+          console.log('begin', monitor);
+
+          // if an object is returned it will override the default item property of the spec
+          return { name: 'wuwu' } 
+        },
+        isDragging: (monitor) => { console.log('isDragging', monitor) },
+        end: (item) => { console.log('end', item) },
         collect: monitor => ({
             opacity: monitor.isDragging() ? 0.4 : 1,
         }),

@@ -23,7 +23,8 @@ const Container = () => {
     function isDropped(boxName) {
         return droppedBoxNames.indexOf(boxName) > -1;
     }
-    const handleDrop = useCallback((index, item) => {
+    const handleDrop = useCallback((index, item, monitor) => {
+        console.log('drop', item, monitor);
         const { name } = item;
         setDroppedBoxNames(update(droppedBoxNames, name ? { $push: [name] } : { $push: [] }));
         setDustbins(update(dustbins, {
@@ -36,7 +37,7 @@ const Container = () => {
     }, [droppedBoxNames, dustbins]);
     return (<div>
 			<div style={{ overflow: 'hidden', clear: 'both' }}>
-				{dustbins.map(({ accepts, lastDroppedItem }, index) => (<Dustbin accept={accepts} lastDroppedItem={lastDroppedItem} onDrop={item => handleDrop(index, item)} key={index}/>))}
+				{dustbins.map(({ accepts, lastDroppedItem }, index) => (<Dustbin accept={accepts} lastDroppedItem={lastDroppedItem} onDrop={(item, monitor) => handleDrop(index, item, monitor )} key={index}/>))}
 			</div>
 
 			<div style={{ overflow: 'hidden', clear: 'both' }}>

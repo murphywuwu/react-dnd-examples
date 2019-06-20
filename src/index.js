@@ -5,7 +5,8 @@ import HTML5Backend from 'react-dnd-html5-backend'
 import './index.css';
 // import App from './App';
 // import App from './examples-hook/00-chessboard';
-import App from './examples-hook/01-dustbin/copy-or-move';
+// import App from './examples-hook/01-dustbin/copy-or-move';
+import App from './examples-hook/01-dustbin/multiple-targets';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
