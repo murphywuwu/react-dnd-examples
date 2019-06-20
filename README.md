@@ -7,6 +7,49 @@ types是很有用的，当你的app逐渐发展，你可能想需要更多的东
 ## Monitors
 拖放本质上是有状态的。monitors提供拖放状态数据，让你有机会更新组件的props，以响应拖放状态更改
 
+## Top-Level API
+
+#### useDrag
+
+```
+import { useDrag } from 'react-dnd'
+
+function DraggableComponent(props) {
+  const [collectedProps, drag] = useDrag({
+    item: { id, type },
+    canDrag: (monitor) => {  },
+    begin: (monitor) => {  },
+    isDragging: (monitor) => {  },
+    end: (item) => {  },
+    collect: monitor => ({
+        opacity: monitor.isDragging() ? 0.4 : 1,
+    }),
+  })
+  return <div ref={drag}>...</div>
+}
+```
+#### useDrop
+
+```
+import { useDrop } from 'react-dnd'
+
+function myDropTarget(props) {
+  const [collectedProps, drop] = useDrop({
+    accept,
+    canDrop: (item, monitor) => {}
+    hover: (item, monitor) => {}
+    drop: (item, monitor) => {}
+    collect: monitor => ({
+      isOver: monitor.isOver(),
+      canDrop: monitor.canDrop(),
+    }),
+  })
+
+  return <div ref={drop}>Drop Target</div>
+}
+```
+
+
 
 ### 00-chessboard
 ```
