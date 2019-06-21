@@ -236,5 +236,8 @@ const CustomDragLayer = props => {
 		</div>);
 };
 ```
-实际效果
+**work withought preview-getEmptyImage**
 ![image](https://user-images.githubusercontent.com/12481194/59906199-b1972f00-943a-11e9-8fe9-b5f95fdf6a7b.png)
+
+**work with preview-getEmptyImage**
+![image](https://user-images.githubusercontent.com/12481194/59907038-b78e0f80-943c-11e9-835d-e73397e848e5.png)
