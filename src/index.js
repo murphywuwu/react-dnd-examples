@@ -10,7 +10,8 @@ import './index.css';
 // import App from './examples-hook/01-dustbin/single-target';
 // import App from './examples-hook/01-dustbin/single-target-in-iframe';
 // import App from './examples-hook/01-dustbin/stress-test';
-import App from './examples-hook/02-drag-around/custom-drag-layer';
+// import App from './examples-hook/02-drag-around/custom-drag-layer';
+import App from './examples-hook/02-drag-around/naive'
 
 import * as serviceWorker from './serviceWorker';
 
