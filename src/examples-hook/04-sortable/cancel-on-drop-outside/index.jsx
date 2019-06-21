@@ -40,6 +40,7 @@ const Container = () => {
     const [cards, setCards] = useState(ITEMS);
     const moveCard = (id, atIndex) => {
         const { card, index } = findCard(id);
+        // index位置的card和atIndex位置的card置换位置
         setCards(update(cards, {
             $splice: [[index, 1], [atIndex, 0, card]],
         }));

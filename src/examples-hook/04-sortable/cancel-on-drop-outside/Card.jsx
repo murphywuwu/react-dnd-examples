@@ -26,7 +26,10 @@ const Card = ({ id, text, moveCard, findCard }) => {
             }
         },
     });
+    // 如果正在拖曳中，则隐藏拖曳块本身
     const opacity = isDragging ? 0 : 1;
+    
+    // 绑定该node，使得此node即可拖曳块也可放置块
     return (<div ref={node => drag(drop(node))} style={{ ...style, opacity }}>
 			{text}
 		</div>);
