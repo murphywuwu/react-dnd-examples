@@ -10,6 +10,7 @@ const style = {
 };
 const TargetBox = ({ onDrop, lastDroppedColor }) => {
     const [{ isOver, draggingColor, canDrop }, drop] = useDrop({
+        // 可接收一个数组: 代表下面两种类型的拖曳块都可接收
         accept: [Colors.YELLOW, Colors.BLUE],
         drop(item) {
             onDrop(item.type);

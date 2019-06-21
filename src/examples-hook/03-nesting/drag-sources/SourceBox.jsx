@@ -9,7 +9,9 @@ const style = {
 const SourceBox = ({ color, children }) => {
     const [forbidDrag, setForbidDrag] = useState(false);
     const [{ isDragging }, drag] = useDrag({
+        // 根据color区分不同类型的拖曳块
         item: { type: `${color}` },
+        // 控制是否能拖曳
         canDrag: !forbidDrag,
         collect: (monitor) => ({
             isDragging: monitor.isDragging(),
@@ -18,6 +20,9 @@ const SourceBox = ({ color, children }) => {
     const onToggleForbidDrag = useCallback(() => {
         setForbidDrag(!forbidDrag);
     }, [forbidDrag]);
+
+    // useMemo：用于缓存值。
+    // 每当color发生变化，则返回最新值。否则返回缓存值
     const backgroundColor = useMemo(() => {
         switch (color) {
             case Colors.YELLOW:
