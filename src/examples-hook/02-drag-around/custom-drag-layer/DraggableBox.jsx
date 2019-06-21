@@ -11,8 +11,8 @@ function getStyles(left, top, isDragging) {
         WebkitTransform: transform,
         // IE fallback: hide the real node using CSS when dragging
         // because IE will ignore our custom "empty image" drag preview.
-        opacity: isDragging ? 0 : 1,
-        height: isDragging ? 0 : '',
+        // opacity: isDragging ? 0 : 1,
+        // height: isDragging ? 0 : '',
     };
 }
 const DraggableBox = props => {
@@ -24,12 +24,10 @@ const DraggableBox = props => {
         }),
     });
     useEffect(() => {
-        // 返回透明空图像的函数。使用`DragSourceConnector`的`connect.DragPreview()`完全隐藏浏览器的拖动预览
-        // 方便使用DragLayer绘制自定义拖动图层， 自定义拖动预览在IE中不起作用
         preview(getEmptyImage(), { 
           // IE fallback: specify that we'd rather screenshot the node
           // when it already knows it's being dragged so we can hide it with CSS.
-          captureDraggingState: true 
+          // captureDraggingState: true 
         });
     }, []);
     return (<div ref={drag} style={getStyles(left, top, isDragging)}>

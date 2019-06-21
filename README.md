@@ -129,3 +129,112 @@ export function canMoveKnight(toX, toY) {
 2. 横坐标上到拖动元素的位置有1个位置的绝对距离，纵坐标上到拖动元素的位置有2个位置的绝对距离
 
 ![image](https://user-images.githubusercontent.com/12481194/59816201-cc3faa00-934d-11e9-942a-3e359f64f5fb.png)
+
+### 02-drag-around
+
+#### custom-drag-layer
+
+```
+function getStyles(left, top, isDragging) {
+    const transform = `translate3d(${left}px, ${top}px, 0)`;
+    return {
+        position: 'absolute',
+        transform,
+        WebkitTransform: transform,
+        <!-- 不考虑IE -->
+        // IE fallback: hide the real node using CSS when dragging
+        // because IE will ignore our custom "empty image" drag preview.
+        // opacity: isDragging ? 0 : 1,
+        // height: isDragging ? 0 : '',
+    };
+}
+
+const DraggableBox = props => {
+    const { id, title, left, top } = props;
+    const [{ isDragging }, drag, preview] = useDrag({
+        item: { type: ItemTypes.BOX, id, left, top, title },
+        collect: (monitor) => ({
+            isDragging: monitor.isDragging(),
+        }),
+    });
+    useEffect(() => {
+        <!-- 注释掉previe相关代码 -->
+        // preview(getEmptyImage(), { 
+          // IE fallback: specify that we'd rather screenshot the node
+          // when it already knows it's being dragged so we can hide it with CSS.
+          // captureDraggingState: true 
+        // });
+    }, []);
+    return (<div ref={drag} style={getStyles(left, top, isDragging)}>
+			<Box title={title}/>
+		</div>);
+};
+```
+
+```
+import React from 'react';
+import { useDragLayer } from 'react-dnd';
+import ItemTypes from './ItemTypes';
+import BoxDragPreview from './BoxDragPreview';
+import snapToGrid from './snapToGrid';
+const layerStyles = {
+    position: 'fixed',
+    pointerEvents: 'none',
+    zIndex: 100,
+    left: 0,
+    top: 0,
+    width: '100%',
+    height: '100%',
+};
+function getItemStyles(initialOffset, currentOffset, isSnapToGrid) {
+    if (!initialOffset || !currentOffset) {
+        return {
+            display: 'none',
+        };
+    }
+    let { x, y } = currentOffset;
+
+    if (isSnapToGrid) {
+        x -= initialOffset.x;
+        y -= initialOffset.y;
+        [x, y] = snapToGrid(x, y);
+
+        x += initialOffset.x;
+        y += initialOffset.y;
+    }
+    const transform = `translate(${x}px, ${y}px)`;
+    return {
+        transform,
+        WebkitTransform: transform,
+    };
+}
+const CustomDragLayer = props => {
+    const { itemType, isDragging, item, initialOffset, currentOffset, } = useDragLayer(monitor => ({
+        item: monitor.getItem(),
+        itemType: monitor.getItemType(),
+        initialOffset: monitor.getInitialSourceClientOffset(),
+        currentOffset: monitor.getSourceClientOffset(),
+        isDragging: monitor.isDragging(),
+    }));
+    function renderItem() {
+        switch (itemType) {
+            case ItemTypes.BOX:
+                return <BoxDragPreview title={item.title}/>;
+            default:
+                return null;
+        }
+    }
+    if (!isDragging) {
+        return null;
+    }
+    
+    return (<div style={layerStyles}>
+      <!-- 去除这段代码，仅仅renderItem() -->
+			<!-- <div style={getItemStyles(initialOffset, currentOffset, props.snapToGrid)}> -->
+				{renderItem()}
+			<!-- </div> -->
+		</div>);
+};
+```
+实际效果
+![image](https://user-images.githubusercontent.com/12481194/59906199-b1972f00-943a-11e9-8fe9-b5f95fdf6a7b.png)
