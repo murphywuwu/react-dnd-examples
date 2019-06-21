@@ -83,6 +83,27 @@ function myDropTarget(props) {
 }
 ```
 
+#### DragPreviewImage
+用于将HTML Image元素呈现为断开连接的拖动预览的组件
+
+```
+const BoxWithImage = () => {
+    const [{ opacity }, drag, preview] = useDrag({
+        item: { type: ItemTypes.BOX },
+        collect: monitor => ({
+            opacity: monitor.isDragging() ? 0.4 : 1,
+        }),
+    });
+    return (<>
+			<DragPreviewImage connect={preview} src={boxImage}/>
+			<div ref={drag} style={{ ...style, opacity }}>
+				Drag me to see an image
+			</div>
+		</>);
+};
+
+```
+
 ## Backends
 
 + `getEmptyImage()`: 一个返回透明空图像的元素。集合`connectDragPreview`或者`const [, preview] = useDrag({...})`使用。custom drag preview在IE中不起作用
