@@ -24,7 +24,13 @@ const DraggableBox = props => {
         }),
     });
     useEffect(() => {
-        preview(getEmptyImage(), { captureDraggingState: true });
+        // 返回透明空图像的函数。使用`DragSourceConnector`的`connect.DragPreview()`完全隐藏浏览器的拖动预览
+        // 方便使用DragLayer绘制自定义拖动图层， 自定义拖动预览在IE中不起作用
+        preview(getEmptyImage(), { 
+          // IE fallback: specify that we'd rather screenshot the node
+          // when it already knows it's being dragged so we can hide it with CSS.
+          captureDraggingState: true 
+        });
     }, []);
     return (<div ref={drag} style={getStyles(left, top, isDragging)}>
 			<Box title={title}/>

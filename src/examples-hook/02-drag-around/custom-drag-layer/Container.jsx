@@ -11,6 +11,7 @@ const styles = {
     position: 'relative',
 };
 function renderBox(item, key) {
+    // 可拖曳的盒子
     return <DraggableBox key={key} id={key} {...item}/>;
 }
 const Container = ({ snapToGrid }) => {
@@ -29,6 +30,7 @@ const Container = ({ snapToGrid }) => {
         accept: ItemTypes.BOX,
         drop(item, monitor) {
             const delta = monitor.getDifferenceFromInitialOffset();
+            // console.log('delta', delta.x, delta.y);
             let left = Math.round(item.left + delta.x);
             let top = Math.round(item.top + delta.y);
             if (snapToGrid) {

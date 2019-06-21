@@ -12,6 +12,7 @@ const BoxDragPreview = memo(({ title }) => {
         return () => clearInterval(interval);
     }, [tickTock]);
     return (<div style={styles}>
+     {/* 同DraggableBox一样使用的是同一种Box */}
 			<Box title={title} yellow={tickTock}/>
 		</div>);
 });

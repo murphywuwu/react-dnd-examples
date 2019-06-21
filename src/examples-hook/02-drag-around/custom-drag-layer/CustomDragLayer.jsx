@@ -19,10 +19,17 @@ function getItemStyles(initialOffset, currentOffset, isSnapToGrid) {
         };
     }
     let { x, y } = currentOffset;
+    // console.log('currentOffset', x, y);
+    // console.log('initialOffset', initialOffset.x, initialOffset.y);
+    // console.log('currentOffset - initialOffset', x- initialOffset.x,  y - initialOffset.y);
     if (isSnapToGrid) {
+        // 移动的距离
         x -= initialOffset.x;
         y -= initialOffset.y;
+        // console.log(x, y);
         [x, y] = snapToGrid(x, y);
+        // console.log('snapToGrid', x, y)
+        // 获取新坐标
         x += initialOffset.x;
         y += initialOffset.y;
     }
@@ -33,6 +40,7 @@ function getItemStyles(initialOffset, currentOffset, isSnapToGrid) {
     };
 }
 const CustomDragLayer = props => {
+    // 通过useDragLayer获取，拖动状态
     const { itemType, isDragging, item, initialOffset, currentOffset, } = useDragLayer(monitor => ({
         item: monitor.getItem(),
         itemType: monitor.getItemType(),
