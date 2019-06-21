@@ -36,6 +36,8 @@ currentOffset.y - initialOffset.y == y;
 
 + `isOver({ shallow: true })`: 用于检测悬停是仅发生在当前目标上还是嵌套上
 
++ `getClientOffset()`: 在拖动操作进行时，返回指针(鼠标在拖曳块上的位置)的最后记录的`{x, y}`客户端偏移量。如果没有拖动项目，则返回null
+
 ## Top-Level API
 
 #### useDrag
