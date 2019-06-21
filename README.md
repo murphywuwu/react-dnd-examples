@@ -48,6 +48,9 @@ import { useDrag } from 'react-dnd'
 function DraggableComponent(props) {
   const [collectedProps, drag] = useDrag({
     item: { id, type },
+    options: {
+      dropEffect: props.showCopyIcon ? 'copy' : 'move',
+    },
     canDrag: (monitor) => {  },
     begin: (monitor) => {  },
     isDragging: (monitor) => {  },
