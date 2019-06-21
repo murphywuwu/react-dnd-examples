@@ -11,6 +11,7 @@ const style = {
 const TargetBox = props => {
     const { onDrop } = props;
     const [{ canDrop, isOver }, drop] = useDrop({
+        // 可接收文件类型
         accept: [NativeTypes.FILE],
         drop(item, monitor) {
             if (onDrop) {

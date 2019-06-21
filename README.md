@@ -108,6 +108,10 @@ const BoxWithImage = () => {
 
 + `getEmptyImage()`: 一个返回透明空图像的元素。集合`connectDragPreview`或者`const [, preview] = useDrag({...})`使用。custom drag preview在IE中不起作用
 
+
++ `NativeTypes.FILE`:
+  + `getItem().files`: 包含一系列文件
+
 ### 00-chessboard
 ```
 // 初始化坐标
