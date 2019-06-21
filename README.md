@@ -241,3 +241,39 @@ const CustomDragLayer = props => {
 
 **work with preview-getEmptyImage**
 ![image](https://user-images.githubusercontent.com/12481194/59907038-b78e0f80-943c-11e9-835d-e73397e848e5.png)
+
+**work with preview-getEmptyImage && 根据拖动元素动态计算Drag Layer位置**
+
+```
+function getItemStyles(initialOffset, currentOffset, isSnapToGrid) {
+    if (!initialOffset || !currentOffset) {
+        return {
+            display: 'none',
+        };
+    }
+    let { x, y } = currentOffset;
+
+    if (isSnapToGrid) {
+        x -= initialOffset.x;
+        y -= initialOffset.y;
+        [x, y] = snapToGrid(x, y);
+
+        x += initialOffset.x;
+        y += initialOffset.y;
+    }
+    // 动态计算自定义拖动层的位置
+    const transform = `translate(${x}px, ${y}px)`;
+    return {
+        transform,
+        WebkitTransform: transform,
+    };
+// 获取拖动源的初始坐标和移动坐标数据
+const { itemType, isDragging, item, initialOffset, currentOffset, } = useDragLayer(monitor => ({
+    item: monitor.getItem(),
+    itemType: monitor.getItemType(),
+    initialOffset: monitor.getInitialSourceClientOffset(),
+    currentOffset: monitor.getSourceClientOffset(),
+    isDragging: monitor.isDragging(),
+}));
+```
+![image](https://user-images.githubusercontent.com/12481194/59907482-be695200-943d-11e9-9bd1-7bd9e3f727bf.png)

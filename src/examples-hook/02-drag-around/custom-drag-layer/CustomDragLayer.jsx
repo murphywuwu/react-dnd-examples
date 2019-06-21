@@ -60,7 +60,9 @@ const CustomDragLayer = props => {
         return null;
     }
     return (<div style={layerStyles}>
+      <div style={getItemStyles(initialOffset, currentOffset, props.snapToGrid)}>
 				{renderItem()}
+		  </div> 
 		</div>);
 };
 export default CustomDragLayer;
