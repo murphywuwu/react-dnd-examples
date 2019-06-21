@@ -17,7 +17,8 @@ import './index.css';
 // import App from './examples-hook/04-sortable/cancel-on-drop-outside';
 // import App from './examples-hook/04-sortable/simple';
 // import App from './examples-hook/05-customize/drop-effects';
-import App from './examples-hook/05-customize/handles-and-previews';
+// import App from './examples-hook/05-customize/handles-and-previews';
+import App from './examples-hook/06-other/drag-source-rerender';
 
 import * as serviceWorker from './serviceWorker';
 
