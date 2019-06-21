@@ -36,6 +36,8 @@ const Dustbin = ({ greedy, children }) => {
     });
     const text = greedy ? 'greedy' : 'not greedy';
     let backgroundColor = 'rgba(0, 0, 0, .5)';
+    // isOver && greedy: 只要拖曳块正在Dustbin的上方，该Dustbin以及其嵌套的Dustbin的背景色都为darkgreen
+    // isOverCurrent: 只有拖曳块悬停在当前Dustin上，其背景色才为darkgreen
     if (isOverCurrent || (isOver && greedy)) {
         backgroundColor = 'darkgreen';
     }

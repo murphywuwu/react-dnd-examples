@@ -34,6 +34,8 @@ currentOffset.x - initialOffset.x == x;
 currentOffset.y - initialOffset.y == y;
 ```
 
++ `isOver({ shallow: true })`: 用于检测悬停是仅发生在当前目标上还是嵌套上
+
 ## Top-Level API
 
 #### useDrag
