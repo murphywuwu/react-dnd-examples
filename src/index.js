@@ -12,7 +12,8 @@ import './index.css';
 // import App from './examples-hook/01-dustbin/stress-test';
 // import App from './examples-hook/02-drag-around/custom-drag-layer';
 // import App from './examples-hook/02-drag-around/naive'
-import App from './examples-hook/03-nesting/drag-sources'
+// import App from './examples-hook/03-nesting/drag-sources'
+import App from './examples-hook/03-nesting/drop-targets';
 
 import * as serviceWorker from './serviceWorker';
 
