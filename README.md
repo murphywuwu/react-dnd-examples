@@ -76,7 +76,9 @@ function myDropTarget(props) {
 }
 ```
 
+## Backends
 
++ `getEmptyImage()`: 一个返回透明空图像的元素。集合`connectDragPreview`或者`const [, preview] = useDrag({...})`使用。custom drag preview在IE中不起作用
 
 ### 00-chessboard
 ```
