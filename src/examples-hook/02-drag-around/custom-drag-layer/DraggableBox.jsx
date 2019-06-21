@@ -23,13 +23,13 @@ const DraggableBox = props => {
             isDragging: monitor.isDragging(),
         }),
     });
-    useEffect(() => {
-        preview(getEmptyImage(), { 
+    // useEffect(() => {
+        // preview(getEmptyImage(), { 
           // IE fallback: specify that we'd rather screenshot the node
           // when it already knows it's being dragged so we can hide it with CSS.
           // captureDraggingState: true 
-        });
-    }, []);
+        // });
+    // }, []);
     return (<div ref={drag} style={getStyles(left, top, isDragging)}>
 			<Box title={title}/>
 		</div>);

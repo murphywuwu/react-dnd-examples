@@ -277,3 +277,6 @@ const { itemType, isDragging, item, initialOffset, currentOffset, } = useDragLay
 }));
 ```
 ![image](https://user-images.githubusercontent.com/12481194/59907482-be695200-943d-11e9-9bd1-7bd9e3f727bf.png)
+
+**work withought preview-getEmptyImage && 根据拖动元素动态计算Drag Layer位置**
+![image](https://user-images.githubusercontent.com/12481194/59908045-0ccb2080-943f-11e9-96cc-36858536e82a.png)
