@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "immutability-helper": "^3.0.1",
-    "npm": "^6.9.0",
+    "npm": "^6.14.6",
     "react": "^16.8.6",
     "react-dnd": "^8.0.2",
     "react-dnd-html5-backend": "^8.0.2",
